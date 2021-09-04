@@ -23,7 +23,7 @@ data "aws_region" "current" {}
 resource "aws_instance" "netology_test" {
     ami = data.aws_ami.ubuntu.id   
     instance_type = "t3.micro"
-    count = 1
+    count = 0
 
     lifecycle {
         create_before_destroy = true
