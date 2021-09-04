@@ -2,13 +2,6 @@ provider "aws" {
     region = "us-east-1"
 }
 
-locals {
-    web_instance_count_map = {
-        stage = 1
-        prod = 0
-    }
-}
-
 //Ищем последний дистрибутив Ubuntu 20.04
 data "aws_ami" "ubuntu" {
     most_recent = true
@@ -30,7 +23,7 @@ data "aws_region" "current" {}
 resource "aws_instance" "netology_test" {
     ami = data.aws_ami.ubuntu.id   
     instance_type = t3.micro
-    count = local.web_instance_count_map[terraform.workspace]
+    count = 1
 
     lifecycle {
         create_before_destroy = true
