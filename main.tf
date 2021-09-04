@@ -22,7 +22,7 @@ data "aws_region" "current" {}
 //Описываем создание тестового сервера
 resource "aws_instance" "netology_test" {
     ami = data.aws_ami.ubuntu.id   
-    instance_type = t3.micro
+    instance_type = "t3.micro"
     count = 1
 
     lifecycle {
